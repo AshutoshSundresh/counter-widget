@@ -1,107 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <head>
-      <meta charset="UTF-8">
-      <title>Counter Widget</title>
-      <style>
-         body {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         height: 100vh;
-         margin: 0;
-         background-color: #f0f0f0;
-         font-family: Arial, sans-serif;
-         }
-         #counter-widget {
-         text-align: center;
-         background-color: #fff;
-         padding: 20px;
-         border-radius: 8px;
-         box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-         }
-         button {
-         margin: 5px;
-         padding: 10px 20px;
-         font-size: 16px;
-         border: none;
-         border-radius: 5px;
-         cursor: pointer;
-         }
-         button#count {
-         font-size: 50px;
-         padding: 15px 30px;
-         }
-      </style>
-      <script>
-         var frameIndex = 0;
-         var frames = ["frame_1.png", "frame_0.png"];
-                              function setUp () 
-                              {
-                                  var count = 0;
-                                  var round = 0;
-                                  
-                                  var total = count + (round * 108);
-                                  
-                                  document.getElementById('myCount').innerHTML=count;
-                                  document.getElementById('myRound').innerHTML=round;
-                                  document.getElementById('myTotal').innerHTML=total;
-                              }
-                  
-                              function plusCount () 
-                              {
-                                  var count = Number(document.getElementById('myCount').innerHTML);
-                                  var round = Number(document.getElementById('myRound').innerHTML);
-                                  
-                                  if (count >= 107)
-                                  {
-                                      count = 0;
-                                      round = round+1;
-                                  }
-                                  else
-                                  {
-                                      count = count+1;
-                                  }
-                                  
-                                  var total = count + (round * 108);
-             var img = document.getElementById('mala');
-             img.src = frames[frameIndex];
-             frameIndex = (frameIndex + 1) % frames.length;
-                                  
-                                  document.getElementById('myCount').innerHTML=count;
-                                  document.getElementById('myRound').innerHTML=round;
-                                  document.getElementById('myTotal').innerHTML=total;
-                              } 
-                  
-                              function resetApp () 
-                              {
-                                  // alert('Resetting to 0.');
-                                  
-                                  var count = 0;
-                                  var round = 0;
-                                  
-                                  var total = count + (round * 108);
-                                  
-                                  document.getElementById('myCount').innerHTML=count;
-                                  document.getElementById('myRound').innerHTML=round;
-                                  document.getElementById('myTotal').innerHTML=total;
-                              }          
-                  window.onload = setUp;
-               
-      </script>
-   </head>
-   <body>
-      <div id="counter-widget">
-         <img id="mala" src="frame_0.png">
-         <div>Count: <span id="myCount">0</span></div>
-         <div>Round: <span id="myRound">0</span></div>
-         <div>Total: <span id="myTotal">0</span></div>
-         <br/>
-         <button id="count" onclick="plusCount()">Chant</button>
-         <br/>
-         <br/>
-         <button onclick="resetApp()">Reset</button>
-      </div>
-   </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <head>
+        <meta charset="UTF-8" />
+        <title>Counter Widget</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f0f0f0;
+                font-family: Arial, sans-serif;
+            }
+            #counter-widget {
+                text-align: center;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+            button {
+                margin: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button#count {
+                font-size: 50px;
+                padding: 15px 30px;
+            }
+        </style>
+        <script>
+            var frameIndex = 0;
+            var frames = ["frame_1.png", "frame_0.png"];
+            function setUp() {
+                var count = 0;
+                var round = 0;
+
+                var total = count + round * 108;
+
+                document.getElementById("myCount").innerHTML = count;
+                document.getElementById("myRound").innerHTML = round;
+                document.getElementById("myTotal").innerHTML = total;
+            }
+
+            function plusCount() {
+                var count = Number(document.getElementById("myCount").innerHTML);
+                var round = Number(document.getElementById("myRound").innerHTML);
+
+                if (count >= 107) {
+                    count = 0;
+                    round = round + 1;
+                } else {
+                    count = count + 1;
+                }
+
+                var total = count + round * 108;
+                var img = document.getElementById("mala");
+                img.src = frames[frameIndex];
+                frameIndex = (frameIndex + 1) % frames.length;
+
+                document.getElementById("myCount").innerHTML = count;
+                document.getElementById("myRound").innerHTML = round;
+                document.getElementById("myTotal").innerHTML = total;
+            }
+
+            function resetApp() {
+                // alert('Resetting to 0.');
+
+                var count = 0;
+                var round = 0;
+
+                var total = count + round * 108;
+
+                document.getElementById("myCount").innerHTML = count;
+                document.getElementById("myRound").innerHTML = round;
+                document.getElementById("myTotal").innerHTML = total;
+            }
+            window.onload = setUp;
+        </script>
+    </head>
+    <body>
+        <div id="counter-widget">
+            <img id="mala" src="frame_0.png" />
+            <div>Count: <span id="myCount">0</span></div>
+            <div>Round: <span id="myRound">0</span></div>
+            <div>Total: <span id="myTotal">0</span></div>
+            <br />
+            <button id="count" onclick="plusCount()">Chant</button>
+            <br />
+            <br />
+            <button onclick="resetApp()">Reset</button>
+        </div>
+    </body>
 </html>
