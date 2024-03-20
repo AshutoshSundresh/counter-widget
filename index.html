@@ -30,6 +30,12 @@
                 border-radius: 5px;
                 cursor: pointer;
             }
+            #text-container {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+
             button#count {
                 font-size: 50px;
                 padding: 15px 30px;
@@ -87,9 +93,11 @@
     </head>
     <body>
         <div id="counter-widget">
+            <div id="text-container">
+                <div>Count: <span id="myCount">0</span></div>
+                <div>Round: <span id="myRound">0</span></div>
+            </div>
             <img id="mala" src="frame_0.png" />
-            <div>Count: <span id="myCount">0</span></div>
-            <div>Round: <span id="myRound">0</span></div>
             <div>Total: <span id="myTotal">0</span></div>
             <br />
             <button id="count" onclick="plusCount()">Chant</button>
