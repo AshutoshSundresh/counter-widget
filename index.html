@@ -29,9 +29,10 @@
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
-		color: black;
+                color: black;
             }
             #text-container {
+                align-items: center;
                 display: flex;
                 justify-content: space-between;
                 width: 100%;
@@ -45,6 +46,9 @@
         <script>
             var frameIndex = 0;
             var frames = ["frame_1.png", "frame_0.png"];
+            var timer;
+            var seconds = 0;
+
             function setUp() {
                 var count = 0;
                 var round = 0;
@@ -54,6 +58,7 @@
                 document.getElementById("myCount").innerHTML = count;
                 document.getElementById("myRound").innerHTML = round;
                 document.getElementById("myTotal").innerHTML = total;
+                document.getElementById("myTime").innerHTML = "00:00";
             }
 
             function plusCount() {
@@ -72,6 +77,15 @@
                 img.src = frames[frameIndex];
                 frameIndex = (frameIndex + 1) % frames.length;
 
+                if (!timer) {
+                    timer = setInterval(function () {
+                        seconds++;
+                        var minutes = Math.floor(seconds / 60);
+                        var remainingSeconds = seconds % 60;
+                        document.getElementById("myTime").innerHTML = (minutes < 10 ? "0" : "") + minutes + ":" + (remainingSeconds < 10 ? "0" : "") + remainingSeconds;
+                    }, 1000);
+                }
+
                 document.getElementById("myCount").innerHTML = count;
                 document.getElementById("myRound").innerHTML = round;
                 document.getElementById("myTotal").innerHTML = total;
@@ -85,6 +99,11 @@
 
                 var total = count + round * 108;
 
+                clearInterval(timer);
+                timer = null;
+                seconds = 0;
+                document.getElementById("myTime").innerHTML = "00:00";
+
                 document.getElementById("myCount").innerHTML = count;
                 document.getElementById("myRound").innerHTML = round;
                 document.getElementById("myTotal").innerHTML = total;
@@ -95,6 +114,11 @@
     <body>
         <div id="counter-widget">
             <div id="text-container">
+                <div id="time-box">Time: <span id="myTime">00:00</span></div>
+                <button onclick="resetApp()">Reset</button>
+            </div>
+            <br />
+            <div id="text-container">
                 <div>Count: <span id="myCount">0</span></div>
                 <div>Round: <span id="myRound">0</span></div>
             </div>
@@ -102,9 +126,6 @@
             <div>Total: <span id="myTotal">0</span></div>
             <br />
             <button id="count" onclick="plusCount()">Chant</button>
-            <br />
-            <br />
-            <button onclick="resetApp()">Reset</button>
         </div>
     </body>
 </html>
