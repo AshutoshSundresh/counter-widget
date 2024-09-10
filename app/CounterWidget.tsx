@@ -41,8 +41,8 @@ const CounterWidget: React.FC = () => {
 
   const plusCount = useCallback(() => {
     if (!isActive) setIsActive(true);
-    if (count >= 107) {
-      setCount(0);
+    if (count >= 108) {
+      setCount(1);
       setRound((prevRound) => prevRound + 1);
     } else {
       setCount((prevCount) => prevCount + 1);
