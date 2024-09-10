@@ -7,7 +7,7 @@ import Image from 'next/image';
 const CounterWidget: React.FC = () => {
   const [count, setCount] = useState(0);
   const [round, setRound] = useState(0);
-  const [total, setTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
   const [time, setTime] = useState('00:00');
   const [frameIndex, setFrameIndex] = useState(0);
   const [seconds, setSeconds] = useState(0);
@@ -16,7 +16,7 @@ const CounterWidget: React.FC = () => {
   const frames = ["https://raw.githubusercontent.com/AshutoshSundresh/counter-widget/main/frame_1.png", "https://raw.githubusercontent.com/AshutoshSundresh/counter-widget/main/frame_0.png"];
 
   useEffect(() => {
-    setTotal(count + round * 108);
+    // setTotal(count + round * 108);
   }, [count, round]);
 
   useEffect(() => {
