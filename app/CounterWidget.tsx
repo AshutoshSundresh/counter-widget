@@ -2,9 +2,12 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Button, Card, CardBody, CardHeader } from "@nextui-org/react";
+import useSound from 'use-sound';
 import Image from 'next/image';
-
+  
 const CounterWidget: React.FC = () => {
+  const [PlaySound] = useSound('Effect_Tick.mp3'); 
+
   const [count, setCount] = useState(0);
   const [round, setRound] = useState(0);
   // const [total, setTotal] = useState(0);
@@ -40,6 +43,7 @@ const CounterWidget: React.FC = () => {
   }, [isActive, seconds]);
 
   const plusCount = useCallback(() => {
+    PlaySound();
     if (!isActive) setIsActive(true);
     if (count >= 108) {
       setCount(1);
@@ -48,7 +52,7 @@ const CounterWidget: React.FC = () => {
       setCount((prevCount) => prevCount + 1);
     }
     setFrameIndex((prevIndex) => (prevIndex + 1) % frames.length);
-  }, [count, isActive, frames]);
+  }, [count, isActive, frames, PlaySound]);
 
   const resetApp = () => {
     setCount(0);
