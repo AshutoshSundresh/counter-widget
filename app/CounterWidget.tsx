@@ -10,7 +10,7 @@ const CounterWidget: React.FC = () => {
 
   const [count, setCount] = useState(0);
   const [round, setRound] = useState(0);
-  // const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(0);
   const [time, setTime] = useState('00:00');
   const [frameIndex, setFrameIndex] = useState(0);
   const [seconds, setSeconds] = useState(0);
@@ -19,7 +19,7 @@ const CounterWidget: React.FC = () => {
   const frames = ["https://raw.githubusercontent.com/AshutoshSundresh/counter-widget/main/frame_1.png", "https://raw.githubusercontent.com/AshutoshSundresh/counter-widget/main/frame_0.png"];
 
   useEffect(() => {
-    // setTotal(count + round * 108);
+    setTotal(count + round * 108);
   }, [count, round]);
 
   useEffect(() => {
@@ -74,11 +74,14 @@ const CounterWidget: React.FC = () => {
         <div>
           <div className="grid grid-cols-2 gap-4 mb-6 text-xl text-center">
             <p>Count: {count}</p>
-            <p>Round: {round}</p>
+            <p>Round: {round}</p> 
           </div>
           <div className="flex justify-center mb-6">
             <Image src={frames[frameIndex]} alt="Mala" width={150} height={150} />
           </div>
+          <div className="grid grid-cols-1 gap-4 mb-6 text-xl text-center">
+            <p>Total: {total}</p>
+          </div>          
         </div>
         <Button 
           color="primary" 
