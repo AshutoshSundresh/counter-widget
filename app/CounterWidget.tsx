@@ -6,7 +6,10 @@ import useSound from 'use-sound';
 import Image from 'next/image';
   
 const CounterWidget: React.FC = () => {
-  const [PlaySound] = useSound('Effect_Tick.mp3'); 
+  const [isMuted, setIsMuted] = useState(false);
+  const [PlaySound] = useSound('Effect_Tick.mp3', { 
+    soundEnabled: !isMuted 
+  }); 
 
   const [count, setCount] = useState(0);
   const [round, setRound] = useState(0);
@@ -62,13 +65,27 @@ const CounterWidget: React.FC = () => {
     setIsActive(false);
   };
 
+  const toggleMute = () => {
+    setIsMuted(prev => !prev);
+  };
+
   return (
     <Card className="w-full h-full sm:max-w-[600px] sm:h-auto">
       <CardHeader className="flex justify-between">
         <p className="text-2xl">Time: {time}</p>
-        <Button color="danger" variant="flat" onPress={resetApp}>
-          Reset
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            color="default" 
+            variant="flat" 
+            onPress={toggleMute}
+            isIconOnly
+          >
+            {isMuted ? "🔇" : "🔊"}
+          </Button>
+          <Button color="danger" variant="flat" onPress={resetApp}>
+            Reset
+          </Button>
+        </div>
       </CardHeader>
       <CardBody className="flex flex-col justify-between h-full">
         <div>
