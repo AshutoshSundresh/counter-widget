@@ -6,7 +6,7 @@ import useSound from 'use-sound';
 import Image from 'next/image';
   
 const CounterWidget: React.FC = () => {
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [PlaySound] = useSound('Effect_Tick.mp3', { 
     soundEnabled: !isMuted 
   }); 
